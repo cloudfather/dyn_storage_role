@@ -1,0 +1,24 @@
+- hosts: all
+
+  roles:
+    - name: rhel-system-roles.storage
+      storage_pools:
+        - name: vgtest
+          disks:
+            - sdb
+          volumes:
+            - name: lvtest01
+              size: "60%"
+              mount_point: "/mnt/vgtest/lvtest01"
+              fs_type: xfs
+              state: present
+            - name: lvtest02
+              size: "100%"
+              fs_type: ext4
+              mount_point: "/mnt/vgtest/lvtest02"
+              #      storage_volumes:
+              #        - name: images
+              #          type: disk
+              #          disks: ["mpathc"]
+              #          mount_point: /opt/images
+              #          fs_label: images
